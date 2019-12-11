@@ -11,17 +11,29 @@ public class Share {
                 list_subj.add(e);
             }
         }
+        //список всех субъектов
+        List<Object_>listAllSubject = new ArrayList<>();
+        for (Edge e: graph){
+            if (e.getObject_1().getClassName().equals("Subject")){
+                listAllSubject.add(e.getObject_1());
+            }
+            if (e.getObject_2().getClassName().equals("Subject")){
+                listAllSubject.add(e.getObject_2());
+            }
+        }
         //список рёбер состоящих из объектов
         for (Edge e : graph) {
             if (e.getObject_1().getClassName().equals("Object") && e.getObject_2().getClassName().equals("Object"))
                 list_obj.add(e);
         }
 
-        Set<Set<Object_>> islands = new HashSet<>();
+        Set<Island> islands = new HashSet<>();
         Set<Object_> handledInAnyIsland = new HashSet<>();
         Deque<Object_> stack = new ArrayDeque<>();
         Object_ current;
+
         //групирование по островам
+        int i = 1;
         for (Edge e : graph) {
             if (e.getObject_1().getClassName().equals("Subject") && !handledInAnyIsland.contains(e.getObject_1())) {
                 stack.push(e.getObject_1());
@@ -30,7 +42,7 @@ public class Share {
                 stack.push(e.getObject_2());
             }
             if (!stack.isEmpty()) {
-                HashSet<Object_> island = new HashSet<>();
+                Island island = new Island(i);
                 while (!stack.isEmpty()) {
                     current = stack.pop();
                     island.add(current);
@@ -47,19 +59,20 @@ public class Share {
                         }
                     }
                 }
+
                 islands.add(island);
                 handledInAnyIsland.addAll(island);
+                i++;
             }
 
 
         }
+
         //установление связей между остравами
         Deque<Object_> stack_bridge = new ArrayDeque<>();
         Object_ current_for_obj;
-        for (Edge e : graph) {
-            if (e.getObject_1().getClassName().equals("Subject")){
-                stack_bridge.add(e.getObject_1());
-            }
+        for (Object_ e: listAllSubject) {
+
             while(!stack_bridge.isEmpty()){
                 current_for_obj= stack_bridge.pop();
                 for (Edge k: graph){
@@ -70,7 +83,9 @@ public class Share {
             }
         }
 
-
+        for(Island t: islands){
+            System.out.println(t.getIslandIndex() + " ");
+        }
         System.out.println(islands);
         System.out.println(list_obj);
 
