@@ -111,15 +111,28 @@ public class Share {
             connectedObjects.put(e, set);
 
         }
+        HashMap<Subject, Set<Object_>> potomPridumayu = new HashMap<>();
         for (Subject subj : listAllSubject) {
-
+            Set<Object_> bridgeContinue = new HashSet<>();
             for (HashMap.Entry<Subject, Set<Object_>> item : connectedObjects.entrySet()) {
                 for (Set<Object_> setElement : grantConnectedObject) {
-                    if (subj == item.getKey() && objectExist(item.getValue())) {
+                    if (subj == item.getKey() && !item.getValue().isEmpty()) {
                         if (intersection(setElement, item.getValue())) {
-                            
+                            bridgeContinue.add(intersection2(setElement, item.getValue()));
                         }
                     }
+                }
+            }
+            potomPridumayu.put(subj, bridgeContinue);
+        }
+
+
+        for (HashMap.Entry<Subject, Set<Object_>> s : potomPridumayu.entrySet()) {
+            for (HashMap.Entry<Subject, Set<Object_>> k : potomPridumayu.entrySet()) {
+
+                if (intersection(s.getValue(), k.getValue()) && (getIsland(s.getKey()) != getIsland(k.getKey()))) {
+
+                    connectedIslands.add(Set.of(getIsland(s.getKey()), getIsland(k.getKey())));
                 }
             }
         }
@@ -129,9 +142,12 @@ public class Share {
         }
         System.out.println("Соединенные острава:        " + connectedIslands);
         System.out.println("object:      " + connectedObjects);
+        System.out.println("Доплненный мап" + connectedObjects);
         System.out.println("grant:      " + grantConnectedObject);
         System.out.println("Все острава:    " + islands);
-        //System.out.println(list_obj);
+        System.out.println("Дополненные мосты грантом       " + potomPridumayu);
+
+
 
 
         return true;
@@ -148,16 +164,28 @@ public class Share {
 
         return false;
     }
-    public boolean intersection(Set<Object_> s, Set<Object_> s1){
-        for (Object_ o: s){
-            for (Object_ o1: s1){
-                if (o == o1){
+
+    public boolean intersection(Set<Object_> s, Set<Object_> s1) {
+        for (Object_ o : s) {
+            for (Object_ o1 : s1) {
+                if (o == o1) {
                     return true;
                 }
             }
         }
 
         return false;
+    }
+
+    public Object_ intersection2(Set<Object_> s, Set<Object_> s1) {
+        for (Object_ o : s) {
+            for (Object_ o1 : s1) {
+                if (o == o1) {
+                    return o;
+                }
+            }
+        }
+        return null;
     }
 
 }

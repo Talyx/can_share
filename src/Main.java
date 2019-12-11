@@ -19,6 +19,7 @@ public class Main {
     private Object_ object_o9 = new Object_("o", 9, "Object");
     private Object_ object_o10 = new Object_("o", 10, "Object");
     private Object_ object_o11 = new Object_("o", 11, "Object");
+    private Object_ object_o13 = new Object_("o", 13, "Object");
     private Right right_take = new Right("take");
     private Right right_grant= new Right("grant");
     private Right right_alpha = new Right("alpha");
@@ -34,9 +35,10 @@ public class Main {
         Edge edge5 = new Edge(subject_x7, object_z8, right_alpha);
         Edge edge6 = new Edge(subject_x6, object_o9, right_take);
         Edge edge7 = new Edge(object_o9, subject_x3, right_take);
-        Edge edge8 = new Edge(subject_x12, object_o10, right_grant);
+        Edge edge8 = new Edge(subject_x12, object_o13, right_take);
         Edge edge10 = new Edge(object_o11, object_o10, right_take);
         Edge edge9 = new Edge(subject_x4,object_o11,right_take);
+        Edge edge11= new Edge(object_o13,object_o10,right_grant);
 
         List<Edge> list = new ArrayList<>();
         list.add(edge);
@@ -50,6 +52,7 @@ public class Main {
         list.add(edge8);
         list.add(edge9);
         list.add(edge10);
+        list.add(edge11);
         System.out.println("subject 1: " + subject_x1);
         System.out.println("subject 2: " + subject_x2);
         System.out.println("subject 3: " + subject_x3);
@@ -57,7 +60,12 @@ public class Main {
         System.out.println("subject 5: " + subject_x5);
         System.out.println("subject 6: " + subject_x6);
         System.out.println("subject 7: " + subject_x7);
-        System.out.println("subject 11: " + subject_x12);
+        System.out.println("subject 12: " + subject_x12);
+        System.out.println("object_8 : " + object_z8);
+        System.out.println("object_9 : " + object_o9);
+        System.out.println("object_10 : " + object_o10);
+        System.out.println("object_11: " + object_o11);
+        System.out.println("object_13: " + object_o13);
 
 
 
