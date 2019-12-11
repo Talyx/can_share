@@ -78,10 +78,11 @@ public class Share {
         //установление связей между остравами
         Deque<Object_> stack_bridge = new ArrayDeque<>();
         Object_ current_for_obj;
-        HashMap<Subject,Set<Object_>> connectedObjects = new HashMap<>();
+        HashMap<Subject, Set<Object_>> connectedObjects = new HashMap<>();
         Set<Set<Island>> connectedIslands = new HashSet<>();
         Set<Set<Object_>> grantConnectedObject = new HashSet<>();
-;        for (Subject e : listAllSubject) {
+        ;
+        for (Subject e : listAllSubject) {
             stack_bridge.push(e);
             Set<Object_> set = new HashSet<>();
             while (!stack_bridge.isEmpty()) {
@@ -92,24 +93,36 @@ public class Share {
                         stack_bridge.push(k.getObject_2());
                         set.add(k.getObject_2());
                     }
-                    if ( k.getRight().getRight().equals("grant") && (k.getObject_1().getObjectNumber() == current_for_obj.getObjectNumber() || k.getObject_2().getObjectNumber() == current_for_obj.getObjectNumber()) ) {
+                    if (k.getRight().getRight().equals("grant") && (k.getObject_1().getObjectNumber() == current_for_obj.getObjectNumber() || k.getObject_2().getObjectNumber() == current_for_obj.getObjectNumber())) {
                         grantConnectedObject.add(Set.of(k.getObject_1(), k.getObject_2()));
                     }
-                    if ( k.getObject_1().getObjectNumber() == current_for_obj.getObjectNumber() && k.getObject_2().getClassName().equals("Subject") ) {
+                    if (k.getObject_1().getObjectNumber() == current_for_obj.getObjectNumber() && k.getObject_2().getClassName().equals("Subject")) {
                         if (!(getIsland(e) == getIsland((Subject) k.getObject_2())))
-                        connectedIslands.add(Set.of(getIsland(e), getIsland((Subject) k.getObject_2())));
+                            connectedIslands.add(Set.of(getIsland(e), getIsland((Subject) k.getObject_2())));
                     }
-                    if ( k.getObject_2().getObjectNumber() == current_for_obj.getObjectNumber() && k.getObject_1().getClassName().equals("Subject") &&  k.getRight().getRight().equals("grant") ) {
-                        connectedIslands.add(Set.of(getIsland(e), getIsland((Subject) k.getObject_1())));
+                    if (k.getObject_2().getObjectNumber() == current_for_obj.getObjectNumber() && k.getObject_1().getClassName().equals("Subject") && k.getRight().getRight().equals("grant")) {
+                        if (!(getIsland(e) == getIsland((Subject) k.getObject_1())))
+                            connectedIslands.add(Set.of(getIsland(e), getIsland((Subject) k.getObject_1())));
                     }
 
 
                 }
             }
-            connectedObjects.put(e,set);
+            connectedObjects.put(e, set);
 
         }
-//        for()
+        for (Subject subj : listAllSubject) {
+
+            for (HashMap.Entry<Subject, Set<Object_>> item : connectedObjects.entrySet()) {
+                for (Set<Object_> setElement : grantConnectedObject) {
+                    if (subj == item.getKey() && objectExist(item.getValue())) {
+                        if (intersection(setElement, item.getValue())) {
+                            
+                        }
+                    }
+                }
+            }
+        }
 
         for (Island t : islands) {
             System.out.println(t.getIslandIndex() + " " + t);
@@ -118,8 +131,33 @@ public class Share {
         System.out.println("object:      " + connectedObjects);
         System.out.println("grant:      " + grantConnectedObject);
         System.out.println("Все острава:    " + islands);
-      //System.out.println(list_obj);
+        //System.out.println(list_obj);
+
 
         return true;
     }
+
+    public boolean objectExist(Set<Object_> set) {
+        for (Object_ object_ : set) {
+            if (object_.getClassName().equals("Object")) {
+                return true;
+
+            }
+
+        }
+
+        return false;
+    }
+    public boolean intersection(Set<Object_> s, Set<Object_> s1){
+        for (Object_ o: s){
+            for (Object_ o1: s1){
+                if (o == o1){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }

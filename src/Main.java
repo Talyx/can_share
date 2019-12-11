@@ -26,7 +26,7 @@ public class Main {
     //создание графа
     public List<Edge> create_gtraph() {
 
-        Edge edge = new Edge(subject_x1, subject_x2, right_take);
+        Edge edge = new Edge(subject_x1, subject_x2, right_grant);
         Edge edge1 = new Edge(subject_x1, subject_x3, right_take);
         Edge edge2 = new Edge(subject_x2, subject_x7, right_take);
         Edge edge3 = new Edge(subject_x4, subject_x5, right_take);
