@@ -14,11 +14,13 @@ public class Main {
     private Subject subject_x5 = new Subject("x", 5, "Subject");
     private Subject subject_x6 = new Subject("x", 6, "Subject");
     private Subject subject_x7 = new Subject("x", 7, "Subject");
+    private Subject subject_x12 = new Subject("x", 12, "Subject");
     private Object_ object_z8 = new Object_("z", 8, "Object");
     private Object_ object_o9 = new Object_("o", 9, "Object");
     private Object_ object_o10 = new Object_("o", 10, "Object");
+    private Object_ object_o11 = new Object_("o", 11, "Object");
     private Right right_take = new Right("take");
-    private Right right_grand= new Right("grand");
+    private Right right_grant= new Right("grant");
     private Right right_alpha = new Right("alpha");
 
     //создание графа
@@ -32,6 +34,9 @@ public class Main {
         Edge edge5 = new Edge(subject_x7, object_z8, right_alpha);
         Edge edge6 = new Edge(subject_x6, object_o9, right_take);
         Edge edge7 = new Edge(object_o9, subject_x3, right_take);
+        Edge edge8 = new Edge(subject_x12, object_o10, right_grant);
+        Edge edge10 = new Edge(object_o11, object_o10, right_take);
+        Edge edge9 = new Edge(subject_x4,object_o11,right_take);
 
         List<Edge> list = new ArrayList<>();
         list.add(edge);
@@ -42,6 +47,9 @@ public class Main {
         list.add(edge5);
         list.add(edge6);
         list.add(edge7);
+        list.add(edge8);
+        list.add(edge9);
+        list.add(edge10);
         System.out.println("subject 1: " + subject_x1);
         System.out.println("subject 2: " + subject_x2);
         System.out.println("subject 3: " + subject_x3);
@@ -49,6 +57,7 @@ public class Main {
         System.out.println("subject 5: " + subject_x5);
         System.out.println("subject 6: " + subject_x6);
         System.out.println("subject 7: " + subject_x7);
+        System.out.println("subject 11: " + subject_x12);
 
 
 

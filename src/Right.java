@@ -9,3 +9,8 @@ public class Right {
         return right;
     }
 }
+
+//enum Right {
+//    TAKE, GRANT, ALPHA
+//}
+
