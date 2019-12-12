@@ -3,7 +3,7 @@ public class Edge {
     private Object_ object_2;
     private Right right;
 
-    public Edge(Object_ object_1, Object_ object_2, Right right) {
+    public Edge(Object_ object_1, Object_ object_2,  Right right) {
         this.object_1 = object_1;
         this.object_2 = object_2;
         this.right = right;
@@ -17,8 +17,8 @@ public class Edge {
         return object_2;
     }
 
-    public Right getRight() {
-        return right;
+    public String getRight() {
+        return right.getRight();
     }
 
 
