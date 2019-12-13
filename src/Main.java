@@ -9,7 +9,8 @@ public class Main {
     }
 
     //объявление графа
-    List<Edge> graph = new ArrayList<>();
+    Graph graph = new Graph();
+    Graph graph1 = new Graph();
     private Subject subject_x1 = new Subject("Subject");
     private Subject subject_x2 = new Subject("Subject");
     private Subject subject_x3 = new Subject("Subject");
@@ -29,22 +30,19 @@ public class Main {
 
     //создание графа
     public void create_graph() {
-        add_graph_element(new Edge(subject_x1, subject_x2, right_grant));
-        add_graph_element(new Edge(subject_x1, subject_x3, right_take));
-        add_graph_element(new Edge(subject_x2, subject_x7, right_take));
-        add_graph_element(new Edge(subject_x4, subject_x5, right_take));
-        add_graph_element(new Edge(subject_x5, subject_x6, right_take));
-        add_graph_element(new Edge(subject_x7, object_z8, right_alpha));
-        add_graph_element(new Edge(subject_x6, object_o9, right_take));
-        add_graph_element(new Edge(object_o9, subject_x3, right_take));
-        add_graph_element(new Edge(object_o11, object_o10, right_take));
-        add_graph_element(new Edge(subject_x4, object_o11, right_take));
-        add_graph_element(new Edge(subject_x12, object_o13, right_take));
-        add_graph_element(new Edge(object_o13, object_o10, right_grant));
+        graph1.add_graph_element(new Edge(subject_x1, subject_x2, right_grant),graph);
+        graph1.add_graph_element(new Edge(subject_x1, subject_x3, right_take), graph);
+        graph1.add_graph_element(new Edge(subject_x2, subject_x7, right_take), graph);
+        graph1.add_graph_element(new Edge(subject_x4, subject_x5, right_take), graph);
+        graph1.add_graph_element(new Edge(subject_x5, subject_x6, right_take), graph);
+        graph1.add_graph_element(new Edge(subject_x7, object_z8, right_alpha), graph);
+        graph1.add_graph_element(new Edge(subject_x6, object_o9, right_take), graph);
+        graph1.add_graph_element(new Edge(object_o9, subject_x3, right_take), graph);
+        graph1.add_graph_element(new Edge(object_o11, object_o10, right_take), graph);
+        graph1.add_graph_element(new Edge(subject_x4, object_o11, right_take), graph);
+        graph1.add_graph_element(new Edge(subject_x12, object_o13, right_take), graph);
+        graph1.add_graph_element(new Edge(object_o13, object_o10, right_grant), graph);
     }
 
-    public void add_graph_element(Edge edge) {
-        graph.add(edge);
-    }
 }
 

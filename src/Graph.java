@@ -1,7 +1,7 @@
 import java.util.ArrayList;
-import java.util.List;
 
-public class Graph {
-
-
+public class Graph extends ArrayList<Edge> {
+    public void add_graph_element(Edge edge, Graph graph) {
+        graph.add(edge);
+    }
 }
