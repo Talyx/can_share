@@ -8,6 +8,10 @@ public class Island extends HashSet<Object_> {
         this.islandIndex = islandIndex;
     }
 
+    public Island() {
+
+    }
+
     public int getIslandIndex() {
         return islandIndex;
     }

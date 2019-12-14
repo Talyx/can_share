@@ -59,8 +59,8 @@ public class Function {
     }
 
     // создание списка рёбер состоящих из субъектов
-    public List<Edge> create_list_subj(Graph graph) {
-        List<Edge> list_subj = new ArrayList<>();
+    public Graph create_graph_subj(Graph graph) {
+       Graph list_subj = new Graph();
         for (Edge e : graph) {
             if (!e.getObject_1().is_Object() && !e.getObject_2().is_Object()) {
                 list_subj.add(e);

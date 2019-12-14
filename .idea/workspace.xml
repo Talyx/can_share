@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a76c210-b15f-476d-aac8-027f1bfefd9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/can_share/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/can_share/Function.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Function.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/can_share/Island.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Island.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/can_share/META-INF/can_share.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/META-INF/can_share.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/can_share/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/can_share/Object_.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Object_.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/can_share/Subject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Subject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/can_share/Share.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Share.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Function.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Island.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Island.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Share.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +45,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
@@ -49,6 +53,18 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -63,18 +79,6 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -117,6 +121,17 @@
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit 1" />
