@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0a76c210-b15f-476d-aac8-027f1bfefd9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/can_share/Function.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Function.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/can_share/Island.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Island.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/can_share/META-INF/can_share.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/META-INF/can_share.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/can_share/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/can_share/Share.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/can_share/Share.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Island.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Island.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Share.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Share.java" afterDir="false" />
     </list>
@@ -127,7 +122,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -18,20 +18,166 @@ public class Share {
         create_island_connection(graph);                                               //установление связей "тейк" между остравами и обнаружение "гранов"
         complete_island_connection();                                                 //дополнение списка связанных остраваов
         create_archipelago();
-        if (!object_1.is_Object() && !object_2.is_Object()) {
-            for (Set<Island> isL: archipelagos){
-                if (potom(object_1,isL) && potom(object_2,isL)){
+//        if (!object_1.is_Object() && !object_2.is_Object()) {
+//            for (Set<Island> isL: archipelagos){
+//                if (potom(object_1,isL) && potom(object_2,isL)){
+//                    return true;
+//                }
+//            }
+//        }
+//        else if (object_1.is_Object() && object_2.is_Object()){
+//            Set<Set<Island>> a1 = new HashSet<>();
+//            Set<Set<Island>> a2 = new HashSet<>();
+//            a1 = get_list_archipelagos_for_object(object_1);
+//            a2 = get_list_archipelagos_for_object(object_2);
+//            if (archipelago_intersection(a1,a2)){
+//                return true;
+//            }
+//        }
+//        else if (!object_1.is_Object() && object_2.is_Object()){
+//            Set<Set<Island>> a1 = new HashSet<>();
+//             a1 = get_list_archipelagos_for_object(object_2);
+//             if (a1.contains(get_archipelago(object_1))){
+//              return true;
+//             }
+//
+//        }
+//        else if (object_1.is_Object() && !object_2.is_Object()){
+//            Set<Set<Island>> a1 = new HashSet<>();
+//            a1 = get_list_archipelagos_for_object(object_1);
+//            if (a1.contains(get_archipelago(object_1))){
+//                return true;
+//            }
+//        }
+        Set<Set<Island>> x;
+        Set<Set<Island>> y;
+        x = get_list_archipelagos_for_object_1(object_1, graph);
+        y = get_list_archipelagos_for_object_2(object_2, graph);
+        if (archipelago_intersection(x, y)) {
+//            System.out.println("Соединенные острава:        " + connectedIslands);
+//            System.out.println("Все острава:    " + islands);
+//            System.out.println("archipelagos:       " + archipelagos);
+            return true;
+        }
+
+//        System.out.println("Соединенные острава:        " + connectedIslands);
+//        System.out.println("Все острава:    " + islands);
+//        System.out.println("archipelagos:       " + archipelagos);
+
+        return false;
+    }
+
+
+    private boolean archipelago_intersection(Set<Set<Island>> a1, Set<Set<Island>> a2) {
+        for (Set<Island> arch_a1: a1){
+            for (Set<Island> arch_a2: a2){
+                if (arch_a1==arch_a2){
                     return true;
                 }
             }
         }
-
-
-        System.out.println("Соединенные острава:        " + connectedIslands);
-        System.out.println("Все острава:    " + islands);
-        System.out.println("archipelagos:       " + archipelagos);
-
         return false;
+    }
+
+    private Set<Set<Island>> get_list_archipelagos_for_object_1(Object_ object_, Graph graph) {
+        if (object_.is_Object()) {
+            Set<Set<Island>> archipelagos = new HashSet<>();
+            Deque<Object_> stack = new ArrayDeque<>();
+            Object_ current;
+            List<Object_> list = new ArrayList<>();
+            for (Edge e : graph) {
+                if (e.getObject_2() == object_ && e.getRight().equals("grant")) {
+                    if (!e.getObject_1().is_Object())
+                        archipelagos.add(get_archipelagos((e.getObject_1())));
+                    else
+                        list.add(e.getObject_1());
+                }
+
+            }
+            Set<Object_> set = new HashSet<>();
+            for (Object_ obj : list) {
+                stack.push(obj);
+                while (!stack.isEmpty()) {
+                    current = stack.pop();
+                    set.add(current);
+                    for (Edge e : graph) {
+                        if (e.getObject_2() == current && e.getRight().equals("take")) {
+                            if (!e.getObject_1().is_Object()) archipelagos.add(get_archipelagos(e.getObject_1()));
+                            else if (set.contains(e.getObject_1()) && !stack.contains(e.getObject_1())) {
+                                stack.push(e.getObject_1());
+                            }
+                        }
+                    }
+                }
+            }
+            return archipelagos;
+        } else
+            return Set.of(get_archipelagos(object_));
+    }
+
+    private Set<Island> get_archipelagos(Object_ object_2) {
+        for (Set<Island> archi : archipelagos) {
+            if (potom(object_2, archi)) {
+                return archi;
+            }
+        }
+        throw new RuntimeException(object_2 + " not have archipelagos");
+    }
+
+    private Set<Set<Island>> get_list_archipelagos_for_object_2(Object_ object_, Graph graph) {
+        if (object_.is_Object()) {
+            List<Object_> list = new ArrayList<>();
+            Set<Set<Island>> archipelagos = new HashSet<>();
+            Deque<Object_> stack = new ArrayDeque<>();
+            Object_ current;
+            for (Edge e : graph) {
+                if (e.getObject_2() == object_ && e.getRight().equals("alpha")) {
+                    if (!e.getObject_1().is_Object())
+                        archipelagos.add(get_archipelagos((e.getObject_1())));
+                    else
+                        list.add(e.getObject_1());
+                }
+            }
+
+            Set<Object_> set = new HashSet<>();
+            for (Object_ obj : list) {
+                stack.push(obj);
+                while (!stack.isEmpty()) {
+                    current = stack.pop();
+                    set.add(current);
+                    for (Edge e : graph) {
+                        if (e.getObject_2() == current && e.getRight().equals("take")) {
+                            if (!e.getObject_1().is_Object()) archipelagos.add(get_archipelagos(e.getObject_2()));
+                            else if (set.contains(e.getObject_1()) && !stack.contains(e.getObject_1())) {
+                                stack.push(e.getObject_1());
+                            }
+                        }
+                    }
+                }
+            }
+            return archipelagos;
+        } else
+            return Set.of(get_archipelagos(object_));
+//            Set<Object_> set = new HashSet<>();
+//            Set<Set<Island>> archipelagos = new HashSet<>();
+//            Deque<Object_> stack = new ArrayDeque<>();
+//            Object_ current;
+//            stack.push(object_);
+//
+//            while (!stack.isEmpty()) {
+//                current = stack.pop();
+//                for (Edge e : graph) {
+//                    if (e.getObject_2() == current && e.getRight().equals("take"))
+//                        if (!e.getObject_1().is_Object()) archipelagos.add(get_archipelagos(e.getObject_1()));
+//                        else if (!stack.contains(e.getObject_1()) && !set.contains(e.getObject_1())) {
+//                            stack.push(e.getObject_1());
+//                            set.add(e.getObject_1());
+//                        }
+//                }
+//            }
+//            return archipelagos;
+//        }
+//        else return Set.of(get_archipelagos(object_));
     }
 
     //установление связей "тейк" между остравами и обнаружение "гранов"
@@ -112,7 +258,8 @@ public class Share {
         }
 
     }
-    private Island return_island_neighbour(Set<Island> i, Island isld){
+
+    private Island return_island_neighbour(Set<Island> i, Island isld) {
         for (Island isla : i) {
             if (isla != isld)
                 return isla;
@@ -128,7 +275,7 @@ public class Share {
         throw new RuntimeException(s + " not in any island");
     }
 
-        public boolean potom(Object_ object_, Set<Island> isL) {
+    public boolean potom(Object_ object_, Set<Island> isL) {
         for (Island i : isL) {
             if (i.contains(object_))
                 return true;
