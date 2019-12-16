@@ -18,60 +18,22 @@ public class Share {
         create_island_connection(graph);                                               //установление связей "тейк" между остравами и обнаружение "грантов"
         complete_island_connection();                                                 //дополнение списка связанных остраваов
         create_archipelago();
-//        if (!object_1.is_Object() && !object_2.is_Object()) {
-//            for (Set<Island> isL: archipelagos){
-//                if (potom(object_1,isL) && potom(object_2,isL)){
-//                    return true;
-//                }
-//            }
-//        }
-//        else if (object_1.is_Object() && object_2.is_Object()){
-//            Set<Set<Island>> a1 = new HashSet<>();
-//            Set<Set<Island>> a2 = new HashSet<>();
-//            a1 = get_list_archipelagos_for_object(object_1);
-//            a2 = get_list_archipelagos_for_object(object_2);
-//            if (archipelago_intersection(a1,a2)){
-//                return true;
-//            }
-//        }
-//        else if (!object_1.is_Object() && object_2.is_Object()){
-//            Set<Set<Island>> a1 = new HashSet<>();
-//             a1 = get_list_archipelagos_for_object(object_2);
-//             if (a1.contains(get_archipelago(object_1))){
-//              return true;
-//             }
-//
-//        }
-//        else if (object_1.is_Object() && !object_2.is_Object()){
-//            Set<Set<Island>> a1 = new HashSet<>();
-//            a1 = get_list_archipelagos_for_object(object_1);
-//            if (a1.contains(get_archipelago(object_1))){
-//                return true;
-//            }
-//        }
+
         Set<Set<Island>> x;
         Set<Set<Island>> y;
         x = get_list_archipelagos_for_object_1(object_1, graph);
         y = get_list_archipelagos_for_object_2(object_2, graph);
         if (archipelago_intersection(x, y)) {
-//            System.out.println("Соединенные острава:        " + connectedIslands);
-//            System.out.println("Все острава:    " + islands);
-//            System.out.println("archipelagos:       " + archipelagos);
             return true;
         }
-
-//        System.out.println("Соединенные острава:        " + connectedIslands);
-//        System.out.println("Все острава:    " + islands);
-//        System.out.println("archipelagos:       " + archipelagos);
-
         return false;
     }
 
 
     private boolean archipelago_intersection(Set<Set<Island>> a1, Set<Set<Island>> a2) {
-        for (Set<Island> arch_a1: a1){
-            for (Set<Island> arch_a2: a2){
-                if (arch_a1==arch_a2){
+        for (Set<Island> arch_a1 : a1) {
+            for (Set<Island> arch_a2 : a2) {
+                if (arch_a1 == arch_a2) {
                     return true;
                 }
             }
@@ -86,7 +48,7 @@ public class Share {
             Object_ current;
             List<Object_> list = new ArrayList<>();
             for (Edge e : graph) {
-                if (e.getObject_2() == object_ && e.getRight().equals("grant")) {
+                if (e.getObject_2() == object_ && e.getRight() == Right.GRANT) {
                     if (!e.getObject_1().is_Object())
                         archipelagos.add(get_archipelagos((e.getObject_1())));
                     else
@@ -101,7 +63,7 @@ public class Share {
                     current = stack.pop();
                     set.add(current);
                     for (Edge e : graph) {
-                        if (e.getObject_2() == current && e.getRight().equals("take")) {
+                        if (e.getObject_2() == current && e.getRight()== Right.TAKE) {
                             if (!e.getObject_1().is_Object()) archipelagos.add(get_archipelagos(e.getObject_1()));
                             else if (set.contains(e.getObject_1()) && !stack.contains(e.getObject_1())) {
                                 stack.push(e.getObject_1());
@@ -131,7 +93,7 @@ public class Share {
             Deque<Object_> stack = new ArrayDeque<>();
             Object_ current;
             for (Edge e : graph) {
-                if (e.getObject_2() == object_ && e.getRight().equals("alpha")) {
+                if (e.getObject_2() == object_ && e.getRight() == Right.ALPHA) {
                     if (!e.getObject_1().is_Object())
                         archipelagos.add(get_archipelagos((e.getObject_1())));
                     else
@@ -146,7 +108,7 @@ public class Share {
                     current = stack.pop();
                     set.add(current);
                     for (Edge e : graph) {
-                        if (e.getObject_2() == current && e.getRight().equals("take")) {
+                        if (e.getObject_2() == current && e.getRight() == Right.TAKE) {
                             if (!e.getObject_1().is_Object()) archipelagos.add(get_archipelagos(e.getObject_2()));
                             else if (set.contains(e.getObject_1()) && !stack.contains(e.getObject_1())) {
                                 stack.push(e.getObject_1());
@@ -158,26 +120,6 @@ public class Share {
             return archipelagos;
         } else
             return Set.of(get_archipelagos(object_));
-//            Set<Object_> set = new HashSet<>();
-//            Set<Set<Island>> archipelagos = new HashSet<>();
-//            Deque<Object_> stack = new ArrayDeque<>();
-//            Object_ current;
-//            stack.push(object_);
-//
-//            while (!stack.isEmpty()) {
-//                current = stack.pop();
-//                for (Edge e : graph) {
-//                    if (e.getObject_2() == current && e.getRight().equals("take"))
-//                        if (!e.getObject_1().is_Object()) archipelagos.add(get_archipelagos(e.getObject_1()));
-//                        else if (!stack.contains(e.getObject_1()) && !set.contains(e.getObject_1())) {
-//                            stack.push(e.getObject_1());
-//                            set.add(e.getObject_1());
-//                        }
-//                }
-//            }
-//            return archipelagos;
-//        }
-//        else return Set.of(get_archipelagos(object_));
     }
 
     //установление связей "тейк" между остравами и обнаружение "грантов"
@@ -190,18 +132,18 @@ public class Share {
             while (!stack_bridge.isEmpty()) {
                 current_for_obj = stack_bridge.pop();
                 for (Edge k : graph) {
-                    if ((k.getObject_1() == current_for_obj) && k.getRight().equals("take") && k.getObject_2().is_Object()) {
+                    if ((k.getObject_1() == current_for_obj) && k.getRight()== Right.TAKE && k.getObject_2().is_Object()) {
                         stack_bridge.push(k.getObject_2());
                         set.add(k.getObject_2());
                     }
-                    if (k.getRight().equals("grant") && (k.getObject_1() == current_for_obj || k.getObject_2() == current_for_obj)) {
-                        grantConnectedObject.add(new Edge(k.getObject_1(), k.getObject_2(), new Right("grant")));
+                    if (k.getRight() == Right.GRANT && (k.getObject_1() == current_for_obj || k.getObject_2() == current_for_obj)) {
+                        grantConnectedObject.add(new Edge(k.getObject_1(), k.getObject_2(),  Right.GRANT));
                     }
                     if (k.getObject_1() == current_for_obj && !k.getObject_2().is_Object()) {
                         if (!(getIsland(e) == getIsland((Subject) k.getObject_2())))
                             connectedIslands.add(Set.of(getIsland(e), getIsland((Subject) k.getObject_2())));
                     }
-                    if (k.getObject_2() == current_for_obj && !k.getObject_1().is_Object() && k.getRight().equals("grant")) {
+                    if (k.getObject_2() == current_for_obj && !k.getObject_1().is_Object() && k.getRight() == Right.GRANT) {
                         if (!(getIsland(e) == getIsland((Subject) k.getObject_1())))
                             connectedIslands.add(Set.of(getIsland(e), getIsland((Subject) k.getObject_1())));
                     }

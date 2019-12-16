@@ -1,7 +1,7 @@
 
 public class Subject extends Object_ {
 
-    public Subject( String ClassName){
-        super(ClassName);
+    public Subject(boolean bool){
+        super(bool);
     }
 }

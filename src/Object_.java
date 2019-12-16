@@ -1,16 +1,12 @@
 public class Object_ {
 
-    private String ClassName;
+    boolean bool;
 
-    public Object_(String ClassName) {
-        this.ClassName = ClassName;
-    }
-
-    public String getClassName() {
-        return ClassName;
+    public Object_(boolean bool) {
+        this.bool = bool;
     }
 
     public boolean is_Object() {
-        return getClassName().equals("Object");
+        return bool;
     }
 }
