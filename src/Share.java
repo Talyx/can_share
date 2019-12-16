@@ -15,7 +15,7 @@ public class Share {
         Graph graph_subj = function.create_graph_subj(graph);                             //список рёбер состоящих из субъектов
         listAllSubject = function.create_List_all_subject(graph);                        //список всех субъектов
         islands = function.create_island_grouping(graph, graph_subj);                   //групирование по остравам
-        create_island_connection(graph);                                               //установление связей "тейк" между остравами и обнаружение "гранов"
+        create_island_connection(graph);                                               //установление связей "тейк" между остравами и обнаружение "грантов"
         complete_island_connection();                                                 //дополнение списка связанных остраваов
         create_archipelago();
 //        if (!object_1.is_Object() && !object_2.is_Object()) {
@@ -180,7 +180,7 @@ public class Share {
 //        else return Set.of(get_archipelagos(object_));
     }
 
-    //установление связей "тейк" между остравами и обнаружение "гранов"
+    //установление связей "тейк" между остравами и обнаружение "грантов"
     private void create_island_connection(Graph graph) {
         Deque<Object_> stack_bridge = new ArrayDeque<>();
         Object_ current_for_obj;
